@@ -1,4 +1,10 @@
-# Build status — 12 October 2026
+# Build status — 13 October 2026
+
+## 13 October Vercel dependency installation repair
+
+The user's Vercel deployment at commit a8e5940 failed before compilation: `npm ci` rejected missing `@emnapi/runtime@1.11.3` and `@emnapi/core@1.11.3` lockfile entries. Local npm 11.6.2 accepted the incomplete lock, and its package-lock-only repair did not add those entries. Regenerated lock metadata with npm 11.21.0 in an isolated directory targeting Linux x64, preserving all existing package versions. The repaired root lockfile includes both missing entries and npm-generated peer metadata corrections. No application dependencies or install command were changed.
+
+Validation: `npm.cmd exec --yes --offline --cache C:\pddnilds\.npm-cache --package=npm@11.21.0 -- npm ci --dry-run --ignore-scripts --os=linux --cpu=x64 --no-audit --no-fund --loglevel=error` passed. This verifies lockfile acceptance and dependency planning, not an actual Linux installation or completed Vercel build. Registry access initially failed in the sandbox; the authorized network-enabled metadata fetch succeeded. The Vercel cache-dir warning is separate from the lockfile failure. User must push the repaired lockfile and rerun the deployment; deployed runtime, upload limits and notification worker remain unverified.
 
 ## 12 October public access and search indexing amendment
 
