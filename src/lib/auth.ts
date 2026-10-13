@@ -2,6 +2,7 @@ import { randomBytes, createHash } from "node:crypto";
 import { cookies, headers } from "next/headers";
 import { database } from "./db";
 import { assertCashbookAccess } from "./permissions";
+import { isDatabaseUnavailable } from "./database-errors";
 
 export type Role = "admin" | "officer";
 export type Staff = { id: string; email: string; name: string; role: Role; cashbookAccess: boolean };
@@ -74,7 +75,7 @@ export async function assertSameOrigin() {
 export function errorResponse(error: unknown) {
   const message = error instanceof Error ? error.message : "INTERNAL_ERROR";
   const name = error instanceof Error ? error.name : "UnknownError";
-  const networkFailure = name === "MongoNetworkError" || name === "MongoServerSelectionError" || name === "PoolClearedOnNetworkError";
+  const networkFailure = isDatabaseUnavailable(error);
   const status = message === "UNAUTHORIZED" ? 401 : message === "FORBIDDEN" || message === "INVALID_ORIGIN" ? 403 : networkFailure ? 503 : 500;
   if (status >= 500) {
     const code = typeof error === "object" && error && "code" in error ? String(error.code) : "none";

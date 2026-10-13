@@ -47,7 +47,10 @@ Building sections:
 5. Convention Centre
 6. Clinic
 7. Car Park and Landscape
-8. Other
+8. Generator house
+9. Water treatment plant
+10. Sewage treatment plant
+11. Other
 
 Optional previous complaint reference for reminders. Do not require public lookup or expose another complainant's details. If provided, validate the reference without revealing the matched record.
 
@@ -122,3 +125,5 @@ All PDFs: full organization name, National Assembly, division, report title, sel
 Public hosting is authorized with the indexing controls above and protected staff operations. Do not declare readiness until real persistence, staff access, Cloudinary and notification behaviors have been checked or specifically marked unverified.
 
 Individual complaint presentation: a branded document card with grouped submission/location/complainant information, clear handling status, highlighted description and a compact picture. One-page PDF and Print Complaint share the same complete document. Reduce description font size before shrinking other fields when content is unusually long.
+
+Homepage entry cards: show Asset Complaint Form first and Staff sign in second. The sign-in card explicitly states that it is for Physical Development Division staff only.

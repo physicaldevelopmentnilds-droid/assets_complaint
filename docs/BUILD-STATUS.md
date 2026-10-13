@@ -1,5 +1,19 @@
 # Build status — 13 October 2026
 
+## 13 October additional complaint building sections
+
+Added Generator house, Water treatment plant and Sewage treatment plant before Other in the shared building-section list. Public dropdown, server submission validation and staff/report filters consume this same list. Updated product specification. `npm.cmd run typecheck` passed; a synthetic schema check accepted all three new sections without database writes. Commit/push and Vercel deployment remain required for the hosted form to receive the change.
+
+## 13 October localhost database outage
+
+User confirmed the sign-in runtime error occurs on localhost. `npm.cmd run verify:mongo` failed inside and outside the sandbox: all three configured Atlas hosts returned MongoNetworkError with underlying ECONNREFUSED on port 27017 before authentication. The current source-network allowlist, cluster availability and outbound network path require checking. No database settings or credentials were changed and no successful persistence is claimed.
+
+Sign-in now catches only classified MongoDB connectivity errors during existing-session lookup and displays an explicit database-unavailable message while retaining the form/public complaint link. Other errors still propagate; redirect remains outside the catch; protected operations still require verified sessions. Shared API error classification also handles MongoNetworkTimeoutError as 503. `npm.cmd run typecheck` passed; the running browser flow remains unverified. Updated the deployment guide's connectivity blocker. Restoring Atlas access is still required for sign-in and submissions.
+
+## 13 October homepage entry cards
+
+Moved the public complaint card before staff sign-in, renamed its heading to Asset Complaint Form, and made the sign-in description explicit: For Physical Development Division staff only. Updated product specification. Reviewed the diff for card order, wording and preserved route links; `npm.cmd run typecheck` passed. This copy/order change was not deployed; commit and push are needed for Vercel to receive it.
+
 ## 13 October Vercel dependency installation repair
 
 The user's Vercel deployment at commit a8e5940 failed before compilation: `npm ci` rejected missing `@emnapi/runtime@1.11.3` and `@emnapi/core@1.11.3` lockfile entries. Local npm 11.6.2 accepted the incomplete lock, and its package-lock-only repair did not add those entries. Regenerated lock metadata with npm 11.21.0 in an isolated directory targeting Linux x64, preserving all existing package versions. The repaired root lockfile includes both missing entries and npm-generated peer metadata corrections. No application dependencies or install command were changed.

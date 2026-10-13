@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const COMPLAINT_TYPES = ["Furniture", "Appliance", "Structural Defects", "Facilities (e.g. Toilet, Kitchenette)", "Electrical Components (e.g. Switch, Light, Socket)", "Mechanical (A/C, Plumbing)", "Other"] as const;
-export const BUILDING_SECTIONS = ["Reception Hall", "Administrative Block", "Lecture Theatre (Lecture Halls and Open Arena)", "Library Block", "Convention Centre", "Clinic", "Car Park and Landscape", "Other"] as const;
+export const BUILDING_SECTIONS = ["Reception Hall", "Administrative Block", "Lecture Theatre (Lecture Halls and Open Arena)", "Library Block", "Convention Centre", "Clinic", "Car Park and Landscape", "Generator house", "Water treatment plant", "Sewage treatment plant", "Other"] as const;
 export const HANDLING_STATUSES = ["Received", "In progress", "Resolved"] as const;
 
 const required = z.string().trim().min(1).max(500);

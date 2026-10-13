@@ -48,7 +48,7 @@ Official references: [Next.js on Vercel](https://vercel.com/docs/frameworks/full
 
 ## Current blocker
 
-From the development machine on 6 October 2026, the Atlas SRV record resolved but all three shard hosts refused TCP port 27017. The public egress IP matched the supplied address and the user confirmed the Atlas access entry and cluster status. Database persistence, staff login, worker delivery and private deployment remain unverified until the network path is fixed.
+On 13 October 2026, `npm run verify:mongo` again failed from the development machine inside and outside the sandbox: all three Atlas shard hosts refused TCP port 27017 before authentication. Earlier authenticated checks do not establish current availability. Check that the cluster is running, the actual source network is allowed in Atlas Network Access, and outbound port 27017 is permitted. For localhost, Atlas Add Current IP Address must reflect the network running the app; for Vercel, the computer's IP entry does not authorize the deployment network. Authentication and persistence remain blocked on this machine until connectivity is restored; Vercel connectivity requires its own check.
 
 ## Officer access administration
 
